@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: linear-gradient(to right, #5c5b5b, #fff, #fff, #5c5b5b);
+}
+
+/* hide input number arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* message error */
+.error {
+  background-color: red;
+}
+
+/* message success */
+.success {
+  background-color: green;
+}
+
+/* message info */
+.info {
+  background-color: #0b5558;
+}
+
+/* page progressbar */
+.progressBar {
+  transform: translateX(0);
+  animation: progress 2s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+/* page progressbar animations */
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* circular loader */
+.circularLoader {
+  transform: rotateZ(0);
+  animation: circularLoaderAnimation 1s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  color: #fff;
+}
+
+/* circular loader animations */
+@keyframes circularLoaderAnimation {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
