@@ -28,7 +28,7 @@ const Preview = () => {
           <img
             src={featuredImage}
             alt=""
-            className="w-full h-48 object-cover"
+            className="w-full h-48 object-cover border-gray-200"
           />
           <h1 className="text-3xl py-2 font-semibold">{title}</h1>
           <div className="pl-[2px] font-semibold text-xs text-gray-400">

@@ -97,7 +97,7 @@ const Article = ({ post }: ArticleType) => {
           <img
             src={featuredImage}
             alt={title}
-            className="w-full h-48 object-cover"
+            className="w-full h-48 object-cover border border-gray-200"
             aria-label={slug}
             title={title}
           />

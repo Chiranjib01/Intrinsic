@@ -115,8 +115,9 @@ export default function Home() {
     }
     try {
       setLoading(true);
-      await setDoc(doc(db, `articles/${slug}`), {
-        slug: `${slug}-${randomNumber()}`,
+      let randomNum = randomNumber();
+      await setDoc(doc(db, `articles/${slug}-${randomNum}`), {
+        slug: `${slug}-${randomNum}`,
         title,
         category,
         description,

@@ -9,7 +9,7 @@ const Post = ({ post }: any) => {
         title={title}
         aria-label={title}
       >
-        <img src={featuredImage} alt="" className="w-full h-40" />
+        <img src={featuredImage} alt="" className="w-full h-40 rounded-t-md" />
         <div className="font-semibold truncate px-1 py-1">{title}</div>
         <div className="text-sm px-1 pt-1 pb-2">{`${description.slice(
           0,
