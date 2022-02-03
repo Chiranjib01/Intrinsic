@@ -137,7 +137,7 @@ export default function Home() {
       setHtml('');
       showMessage('Post Published', 'success');
       setLoading(false);
-      router.push(`/posts/${slug}`);
+      router.push(`/posts/${slug}-${randomNum}`);
     } catch (err: any) {
       showMessage(err?.message);
       setLoading(false);
