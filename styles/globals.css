@@ -92,6 +92,6 @@ input[type='number'] {
   background-color: #282c34 !important;
 }
 
-.sun-editor-editable pre{
-  color:#fff!important;
+.sun-editor-editable pre.prism-code {
+  color: #fff !important;
 }
