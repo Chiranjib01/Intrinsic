@@ -56,8 +56,8 @@ const Search = () => {
         keywords={`${q?.toString().split(' ')}`}
         description={`Search results for ${q} from ${APP_NAME}`}
       />
-      <div className="max-w-2xl mx-auto bg-white pb-16">
-        <div className="font-semibold px-2 py-4 break-words">
+      <div className="max-w-2xl mx-auto bg-white pb-16 px-2">
+        <div className="font-semibold py-4 break-words">
           Search Results for : {q}
         </div>
         {q ? (

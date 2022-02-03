@@ -10,14 +10,9 @@ import docToString from '../../utils/docToString';
 interface CategoryPosts {
   category: string;
   posts: PostType[];
-  err?:any;
 }
 
-const SpecificCategoryPosts = ({ category, posts,err }: CategoryPosts) => {
-  console.log(err);
-  if(err){
-    return <div className="">error : {JSON.stringify(err)}</div>
-  }
+const SpecificCategoryPosts = ({ category, posts }: CategoryPosts) => {
   return (
     <div>
       <Meta title={`${APP_NAME} - Category ${category}`} />
@@ -77,20 +72,15 @@ export const getStaticProps = async ({ params: { category } }: Props) => {
     });
   } catch (err) {
     return {
-      props: {
-        err,
-      },
+      notFound: true,
     };
-    // return {
-    //   notFound: true,
-    // };
   }
   return {
     props: {
       category,
       posts,
     },
-    revalidate: 60 * 60,
+    revalidate: 20 * 60, // 20 minutes
   };
 };
 

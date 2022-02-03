@@ -71,3 +71,18 @@ input[type='number'] {
     transform: rotateZ(360deg);
   }
 }
+
+/* editor toobar */
+.se-toolbar-sticky {
+  position: fixed;
+  top: 62px !important;
+}
+
+@media screen and (max-width: 400px) {
+  .se-toolbar-sticky {
+    position: inherit !important;
+  }
+  .se-toolbar-sticky-dummy {
+    display: none !important;
+  }
+}

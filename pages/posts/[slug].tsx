@@ -212,7 +212,7 @@ export const getStaticProps = async ({ params: { slug } }: any) => {
     props: {
       post,
     },
-    revalidate: 60 * 60,
+    revalidate: 20 * 60, //20 minutes
   };
 };
 

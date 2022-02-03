@@ -30,7 +30,7 @@ const Posts = ({
         <div
           className={`grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-2 px-1 ${
             dashboard &&
-            'sm:grid-cols-2 md:grid-cols-2 xs:grid-cols-1 xs:px-14 px-0 sm:px-0'
+            'sm:grid-cols-2 md:grid-cols-2 xs:grid-cols-1 xs:px-12 px-2 sm:px-6'
           }`}
         >
           {posts.map((post) => (

@@ -10,15 +10,15 @@ const options: any = {
     ['paragraphStyle', 'blockquote'],
     ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
     ['fontColor', 'hiliteColor', 'textStyle'],
-    ['removeFormat'],
+    // ['removeFormat'],
     // '/', // Line break
     ['outdent', 'indent'],
     ['table', 'link', 'image', 'video', 'audio' /** ,'math' */], // You must add the 'katex' library at options to use the 'math' plugin.
     /** ['imageGallery'] */ // You must add the "imageGalleryUrl".
     ['align', 'horizontalRule', 'list', 'lineHeight'],
-    ['preview', 'print'],
+    // ['preview', 'print'],
     ['fullScreen', 'showBlocks', 'codeView'],
-    ['save'],
+    // ['save'],
   ],
   formats: ['p', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
   font: [

@@ -94,7 +94,7 @@ const Header = () => {
             </div>
             <Link href="/">
               <span
-                className="cursor-pointer font-semibold uppercase font-serif px-[2px] bg-gray-200 shadow hover:shadow-gray-500 shadow-gray-400 hover:bg-gray-300 transition-all duration-500"
+                className="cursor-pointer font-semibold uppercase font-serif px-[2px] bg-gray-200 shadow hover:shadow-gray-500 shadow-gray-400 hover:bg-gray-300 transition-all duration-500 text-lg mob:text-xl lg:text-2xl"
                 onClick={() => setActiveItem('/')}
                 title={APP_NAME}
               >
