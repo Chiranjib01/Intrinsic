@@ -246,7 +246,7 @@ const EditPost = ({ post }: PostType) => {
         </div>
         <Editor
           name="Text Editor"
-          setDefaultStyle="font-size:18px;height:fit-content"
+          setDefaultStyle="font-size:20px;height:fit-content"
           defaultValue={html}
           placeholder="Type Something Here..."
           onChange={(content) => setHtml(content)}

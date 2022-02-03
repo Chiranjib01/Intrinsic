@@ -86,3 +86,8 @@ input[type='number'] {
     display: none !important;
   }
 }
+
+/* code block */
+.prism-code {
+  background-color: #282c34 !important;
+}
