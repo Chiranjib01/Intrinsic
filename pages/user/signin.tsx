@@ -12,7 +12,7 @@ const SignIn = () => {
   const router = useRouter();
   useEffect(() => {
     if (user) {
-      showMessage('Already Signed In', 'info');
+      showMessage('Signed In', 'info');
       router.push('/');
     }
   }, [user]);

@@ -30,7 +30,7 @@ const Meta = ({
         property="og:description"
         content={description}
       />
-      <meta property="og:site_name" content={BASE_URL} />
+      <meta property="og:site_name" content={APP_NAME} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:domain" content={BASE_URL} />
     </Head>

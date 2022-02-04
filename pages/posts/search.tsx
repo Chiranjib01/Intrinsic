@@ -2,6 +2,7 @@ import {
   collection,
   DocumentData,
   getDocs,
+  limit,
   orderBy,
   query,
   where,
@@ -23,16 +24,23 @@ const Search = () => {
   const searchPosts = async () => {
     try {
       setLoading(true);
-      const data: DocumentData = [];
-      const snapshot = await getDocs(
-        query(
-          collection(db, `articles`),
-          orderBy('title', 'asc'),
-          where('title', '>=', q),
-          where('title', '<=', q + '\uf8ff'),
-          orderBy('createdAt', 'desc')
-        )
+      const data: Array<any> = [];
+      const queryString = q?.toString().toLowerCase().split('%20');
+      // const q1 = query(
+      //   collection(db, `articles`),
+      //   orderBy('title', 'asc'),
+      //   where('title', '>=', q),
+      //   where('title', '<=', q + '\uf8ff'),
+      //   orderBy('createdAt', 'desc'),
+      //   limit(10)
+      // );
+      const q2 = query(
+        collection(db, `articles`),
+        where('searchKeys', 'array-contains-any', queryString),
+        orderBy('createdAt', 'desc'),
+        limit(15)
       );
+      const snapshot = await getDocs(q2);
       snapshot.forEach((post) => {
         if (post.exists()) {
           data.push(post.data());
@@ -42,6 +50,7 @@ const Search = () => {
       setLoading(false);
     } catch (err: any) {
       showMessage(err?.message);
+      console.log(err);
       setLoading(false);
     }
   };

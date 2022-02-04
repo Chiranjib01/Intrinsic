@@ -6,7 +6,7 @@ import docToString from '../../utils/docToString';
 import { Post, useGlobalContext } from '../../hooks/useGlobalContext';
 import { useRouter } from 'next/router';
 import Meta from '../../components/Meta';
-import { BASE_URL } from '../../utils/constants';
+import { APP_NAME, BASE_URL } from '../../utils/constants';
 import Link from 'next/link';
 import {
   RiFacebookCircleFill,
@@ -15,6 +15,7 @@ import {
 } from 'react-icons/ri';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import Script from 'next/script';
 
 interface ArticleType {
   post: Post;
@@ -60,6 +61,70 @@ const Article = ({ post }: ArticleType) => {
 
   return (
     <div>
+      {/* seo things start */}
+      <Script>
+        <script type="application/ld+json">
+          {{
+            '@context': 'https://schema.org',
+            '@graph': [
+              {
+                '@type': 'Article',
+                '@id': `${slug}`,
+                url: `${BASE_URL}/#website`,
+                name: `${APP_NAME}`,
+                description: `${APP_NAME} is a place to read , learn and share very nice and informative articles`,
+                potentialAction: [
+                  {
+                    '@type': 'SearchAction',
+                    target: {
+                      '@type': 'EntryPoint',
+                      urlTemplate: `${BASE_URL}/search?q={search_term_string}`,
+                    },
+                    'query-input': 'required name=search_term_string',
+                  },
+                ],
+                inLanguage: 'en-US',
+              },
+              {
+                '@type': 'ImageObject',
+                '@id': `${featuredImage}`,
+                inLanguage: 'en-US',
+                url: `${featuredImage}`,
+                contentUrl: `${featuredImage}`,
+                caption: `${title}`,
+              },
+              {
+                '@type': 'WebPage',
+                '@id': `${BASE_URL}/posts/${slug}`,
+                name: `${title}`,
+                isPartOf: { '@id': `${BASE_URL}` },
+                primaryImageOfPage: {
+                  '@id': `${featuredImage}`,
+                },
+                datePublished: `${createdAt}`,
+                dateModified: `${createdAt}`,
+                author: {
+                  '@id': `${author}`,
+                },
+                description: `${description}`,
+                inLanguage: 'en-US',
+                potentialAction: [
+                  {
+                    '@type': 'ReadAction',
+                    target: [`${BASE_URL}/posts/${slug}`],
+                  },
+                ],
+              },
+              {
+                '@type': 'Person',
+                '@id': `${author}`,
+                name: { APP_NAME },
+                description: `${APP_NAME} is a place to read , learn and share very nice and informative articles`,
+              },
+            ],
+          }}
+        </script>
+      </Script>
       <Meta
         title={title}
         description={description}
@@ -68,8 +133,17 @@ const Article = ({ post }: ArticleType) => {
       <Head>
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`${BASE_URL}/posts/${slug}`} />
-        <meta name="robots" content="index, follow" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
+        <meta property="article:author" content={BASE_URL} />
+        <meta property="article:published_time" content={createdAt} />
+        <meta property="article:modified_time" content={createdAt} />
+        <meta property="og:image" content={featuredImage} />
       </Head>
+      {/* seo things end */}
+      {/* main content */}
       <div className="w-full max-w-2xl mx-auto bg-white border border-gray-300 md:mt-[10px] pb-10 pt-[10px]">
         <div className="py-1 px-4 bg-white space-x-2 truncate">
           <span

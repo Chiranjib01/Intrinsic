@@ -2,7 +2,7 @@ import { NavItem } from './NavItems';
 import { useGlobalContext } from '../hooks/useGlobalContext';
 import { useEffect, useState } from 'react';
 
-const NavCategories = ({ activeItem, setActiveItem }: any) => {
+const NavCategories = ({ activeItem, setActiveItem, asPath }: any) => {
   const { categories } = useGlobalContext();
 
   // detect device
@@ -19,7 +19,13 @@ const NavCategories = ({ activeItem, setActiveItem }: any) => {
   return (
     <>
       {categories.length ? (
-        <section className="w-full bg-white border-b sticky top-[49px] mob:top-[47px] shadow shadow-gray-400 z-10">
+        <section
+          className={`w-full bg-white border-b ${
+            !activeItem.startsWith('/admin/post/edit/') &&
+            activeItem !== '/admin/post/new' &&
+            'sticky top-[49px] mob:top-[47px]'
+          } shadow shadow-gray-400 z-10`}
+        >
           <div
             className={`w-full max-w-2xl mx-auto flex justify-between items-center py-[2px]  border-x border-green-500 overflow-x-scroll scroll-smooth
             ${!isMobile && categories.length > 10 && 'pb-[10px]'} ${

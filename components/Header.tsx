@@ -26,8 +26,7 @@ const Header = () => {
     setActiveItem(asPath.replace('%20', ' '));
   }, [asPath]);
 
-  const { setUser, isAdmin, setIsAdmin, showMessage, message } =
-    useGlobalContext();
+  const { setUser, isAdmin, setIsAdmin, message } = useGlobalContext();
   const [searchText, setSearchText] = useState('');
 
   const signOutHandler = async () => {
@@ -46,7 +45,9 @@ const Header = () => {
 
   const searchHandler = (e: any) => {
     e.preventDefault();
-    router.push(`/posts/search?q=${searchText}`);
+    if (searchText.trim()) {
+      router.push(`/posts/search?q=${searchText}`);
+    }
   };
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -65,7 +66,13 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full bg-white border-b border-b-gray-300 sticky top-0 z-20">
+      <header
+        className={`w-full bg-white border-b border-b-gray-300 ${
+          !activeItem.startsWith('/admin/post/edit/') &&
+          activeItem !== '/admin/post/new' &&
+          'sticky top-0 z-20'
+        }`}
+      >
         {message.text && <PopUpMessage />}
         {showLogoutModal && (
           <LogoutModal
@@ -122,11 +129,11 @@ const Header = () => {
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
-          {scrollY > 600 && (
+          {scrollY > 800 && (
             <div className="relative">
               <div className="absolute h-screen">
                 <IoIosArrowDropupCircle
-                  className="absolute right-1 bottom-14 z-10 h-8 w-8 cursor-pointer text-black opacity-70 hover:opacity-100"
+                  className="absolute right-1 bottom-20 xs:bottom-14 z-10 h-8 w-8 cursor-pointer text-black opacity-70 hover:opacity-100"
                   onClick={() => {
                     if (typeof window) {
                       window.scrollTo(0, 0);

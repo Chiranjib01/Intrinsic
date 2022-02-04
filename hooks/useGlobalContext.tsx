@@ -208,7 +208,7 @@ const Provider = ({ children }: PropsWithChildren<{}>) => {
       const docRef = await getDocs(
         query(
           collection(db, `articles`),
-          limit(9),
+          limit(12),
           orderBy('createdAt', 'desc')
         )
       );
@@ -232,7 +232,7 @@ const Provider = ({ children }: PropsWithChildren<{}>) => {
       const docRef = await getDocs(
         query(
           collection(db, `articles`),
-          limit(9),
+          limit(12),
           where('tag', '==', 'trending'),
           orderBy('createdAt', 'desc')
         )

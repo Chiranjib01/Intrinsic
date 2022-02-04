@@ -28,9 +28,10 @@ const Posts = ({
         )}
         {/* posts */}
         <div
-          className={`grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-2 px-1 ${
-            dashboard &&
-            'sm:grid-cols-2 md:grid-cols-2 xs:grid-cols-1 xs:px-12 px-2 sm:px-6'
+          className={`grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-2 ${
+            dashboard
+              ? 'sm:grid-cols-2 md:grid-cols-2 xs:grid-cols-1 xs:px-12 px-2 sm:px-6'
+              : 'px-1'
           }`}
         >
           {posts.map((post) => (

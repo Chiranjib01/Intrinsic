@@ -71,13 +71,6 @@ const NavItems = ({
         setActiveItem={setActiveItem}
         activeItem={activeItem}
         showSidebar={showSidebar}
-        name="about"
-        path="/about"
-      />
-      <NavItem
-        setActiveItem={setActiveItem}
-        activeItem={activeItem}
-        showSidebar={showSidebar}
         name="contact"
         path="/contact"
       />

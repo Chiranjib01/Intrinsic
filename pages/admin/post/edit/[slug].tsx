@@ -9,6 +9,7 @@ import { db, storage } from '../../../../firebase/config';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import docToString from '../../../../utils/docToString';
 import Meta from '../../../../components/Meta';
+import getSearchKeys from '../../../../utils/getSearchKeys';
 
 const Editor = dynamic(() => import('suneditor-react'), { ssr: false });
 
@@ -95,7 +96,7 @@ const EditPost = ({ post }: PostType) => {
     }
     try {
       setLoading(true);
-      await updateDoc(doc(db, `articles/${post?.slug}`), {
+      let updatedPost: any = {
         title,
         category,
         description,
@@ -103,7 +104,21 @@ const EditPost = ({ post }: PostType) => {
         tags,
         html,
         tag,
-      });
+      };
+      if (post?.tags !== tags || post?.category !== category) {
+        const searchKeys = getSearchKeys(post?.slug, tags, category);
+        updatedPost = {
+          title,
+          category,
+          description,
+          featuredImage,
+          tags,
+          html,
+          tag,
+          searchKeys,
+        };
+      }
+      await updateDoc(doc(db, `articles/${post?.slug}`), updatedPost);
       setTitle('');
       setCategory('');
       setDescription('');
@@ -121,7 +136,7 @@ const EditPost = ({ post }: PostType) => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto overflow-x-hidden">
       <Meta title="Edit Post" />
       <form onSubmit={submitHandler}>
         <div className="bg-white px-2">

@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useGlobalContext } from '../hooks/useGlobalContext';
 import { APP_NAME } from '../utils/constants';
 import NavItems from './NavItems';
 
@@ -16,6 +18,7 @@ const Sidebar = ({
   activeItem,
   setShowLogoutModal,
 }: SideBar) => {
+  const { categories } = useGlobalContext();
   const closeSidebar = (e: any) => {
     if (e.target.id === 'close' || e.target.tagName === 'path') {
       showSidebar(false);
@@ -51,6 +54,22 @@ const Sidebar = ({
             setShowLogoutModal={setShowLogoutModal}
             sidebar={true}
           />
+          {categories.length > 0 && (
+            <div className="py-2">
+              <div className="font-semibold text-lg border-b border-b-gray-200 py-1">
+                Categories
+              </div>
+              <div className="">
+                {categories.slice(0, 25).map((item) => (
+                  <div key={item.id}>
+                    <div className="py-1 inline-block hover:text-green-600">
+                      <Link href={`/category/${item.name}`}>{item.name}</Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div
