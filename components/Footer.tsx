@@ -22,19 +22,23 @@ const Footer = () => {
             {APP_NAME}
           </div>
           <div className="flex items-center space-x-2 text-2xl mob:text-3xl">
-            <a href={FACEBOOK_PROFILE_URL} className="" target="_blank">
-              <RiFacebookCircleFill color="#395498" />
-            </a>
-            <a
-              href={INSTAGRAM_PROFILE_URL}
-              className="instagram mob:h-6 mob:w-6 h-5 w-5 flex items-center justify-center rounded-lg"
-              target="_blank"
-            >
-              <AiFillInstagram
-                className="mob:h-5 mob:w-5 h-4 w-4"
-                color="#fff"
-              />
-            </a>
+            {FACEBOOK_PROFILE_URL && (
+              <a href={FACEBOOK_PROFILE_URL} className="" target="_blank">
+                <RiFacebookCircleFill color="#395498" />
+              </a>
+            )}
+            {INSTAGRAM_PROFILE_URL && (
+              <a
+                href={INSTAGRAM_PROFILE_URL}
+                className="instagram mob:h-6 mob:w-6 h-5 w-5 flex items-center justify-center rounded-lg"
+                target="_blank"
+              >
+                <AiFillInstagram
+                  className="mob:h-5 mob:w-5 h-4 w-4"
+                  color="#fff"
+                />
+              </a>
+            )}
           </div>
         </div>
         {/* site map */}
