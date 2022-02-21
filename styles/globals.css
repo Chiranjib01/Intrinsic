@@ -117,10 +117,20 @@ input[type='number'] {
 }
 
 /* code block */
+/* .prism-code {
+  background-color: #282c34 !important;
+} */
+
+/* .sun-editor-editable pre.prism-code {
+  color: #fff !important;
+} */
+
 .prism-code {
   background-color: #282c34 !important;
-}
-
-.sun-editor-editable pre.prism-code {
+  font-family: monospace !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
   color: #fff !important;
+  line-height: 1.45;
+  word-wrap: break-word;
 }

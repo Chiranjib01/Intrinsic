@@ -19,9 +19,28 @@ const options: any = {
     ['preview', 'print'],
     ['fullScreen', 'showBlocks', 'codeView'],
     // ['save'],
-    ['template'],
   ],
-  formats: ['p', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  paragraphStyles: [
+    'spaced',
+    'bordered',
+    'neon',
+    {
+      name: 'Bg Dark',
+      class: 'prism-code',
+    },
+  ],
+  formats: [
+    'p',
+    'blockquote',
+    'pre',
+    'div',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+  ],
   font: [
     'Arial',
     'Calibri',
@@ -36,16 +55,6 @@ const options: any = {
     'Tahoma',
     'Times New Roman',
     'Trebuchet MS',
-  ],
-  templates: [
-    {
-      name: 'Prism Code',
-      html: '<pre class="prism-code"><p><br></p></pre>',
-    },
-    {
-      name: 'Code',
-      html: '<code><p><br></p></code>',
-    },
   ],
 };
 export default options;

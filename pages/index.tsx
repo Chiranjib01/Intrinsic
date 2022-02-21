@@ -3,6 +3,7 @@ import Posts from '../components/Posts';
 import { APP_NAME } from '../utils/constants';
 import { useGlobalContext } from '../hooks/useGlobalContext';
 import CircularLoader from '../components/CircularLoader';
+import SplashScreen from '../components/SplashScreen';
 
 const Home = () => {
   const {
@@ -11,6 +12,7 @@ const Home = () => {
     trendingPosts,
     trendingPostsLoading,
   } = useGlobalContext();
+
   return (
     <div>
       <Meta
@@ -22,7 +24,7 @@ const Home = () => {
         )}
         {/* recent posts */}
         {recentPostsLoading ? (
-          <CircularLoader />
+          <SplashScreen />
         ) : (
           recentPosts.length > 0 && (
             <div className="w-full">
